@@ -17,7 +17,7 @@ export const GET_OCCUPATIONS = 'GET_OCCUPATIONS'
 export const getCountries = ()=>{
     return async function(dispatch){
         const countriesData = await axios.get(
-            "http://localhost:3001/countries"
+            "/countries"
             )
         const countries = countriesData.data
         dispatch({type:GET_COUNTRIES, payload: countries})
@@ -29,7 +29,7 @@ export const getCountries = ()=>{
     export const getCountriesDos = ()=>{
         return async function(dispatch){
             const countriesData = await axios.get(
-                "http://localhost:3001/countries"
+                "/countries"
                 )
             const countries = countriesData.data
             dispatch({type:GET_COUNTRIES_DOS, payload: countries})
@@ -42,7 +42,7 @@ export const getCountries = ()=>{
 export function postActivities (payload){
     return async function(){
         try{
-const response = await axios.post('http://localhost:3001/activities', payload)
+const response = await axios.post('/activities', payload)
 alert('ACTIVITY CREATED!')      
 return response;
         }catch(error){
@@ -58,7 +58,7 @@ alert('ACTIVITY NOT CREATED')
 export const searchCountries =  (name)=>{
     return async function (dispatch) {
       try{
-        var api = await axios.get(`http://localhost:3001/countries?name=${name}`)
+        var api = await axios.get(`/countries?name=${name}`)
         return dispatch({
             type: SEARCH,
             payload: api.data
@@ -114,7 +114,7 @@ return{
 
 export const getCountry=(name)=>{
 return (dispatch)=>{
-    axios.get(`http://localhost:3001/countries/${name}`)
+    axios.get(`/countries/${name}`)
     .then(response=>{
         dispatch(getCountrySuccess([response.data]))
     })
@@ -129,7 +129,7 @@ return (dispatch)=>{
 export function getActivity() {
     return async function (dispatch) {
         try {
-            const res = await axios.get(`http://localhost:3001/activities`);
+            const res = await axios.get(`/activities`);
             return dispatch({
                 type: GET_ACTIVITY,
                 payload: res.data
