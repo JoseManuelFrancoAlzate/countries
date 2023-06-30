@@ -6,7 +6,6 @@ const { conn, Country} = require('./src/db.js');
 const {
   PORT,
   DB_PORT,
-  DB_HOST
 
 } = process.env;
 
@@ -14,7 +13,7 @@ conn.sync({ alter: true }).then(() => {
 server.listen(PORT, async() => {
 const dbCountries= Country.findAll();
 if(!dbCountries.length){
-  const urlApi = await axios.get(`http://${DB_HOST}:${DB_PORT}/countries`);
+  const urlApi = await axios.get(`http://${DB_PORT}/countries`);
   const infoApi = await urlApi.data.map((pais)=>{
     return{
    id: pais.cca3,
