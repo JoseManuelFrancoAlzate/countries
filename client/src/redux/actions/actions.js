@@ -16,11 +16,16 @@ export const GET_OCCUPATIONS = 'GET_OCCUPATIONS'
 
 export const getCountries = ()=>{
     return async function(dispatch){
-        const countriesData = await axios.get(
-            "/countries"
-            )
-        const countries = countriesData.data
-        dispatch({type:GET_COUNTRIES, payload: countries})
+        try{
+            const countriesData = await axios.get(
+                "/countries"
+                )
+            const countries = countriesData.data
+            dispatch({type:GET_COUNTRIES, payload: countries})
+        }catch(error){
+console.log(error)
+        }
+    
     }
     }
 
@@ -28,11 +33,17 @@ export const getCountries = ()=>{
 
     export const getCountriesDos = ()=>{
         return async function(dispatch){
-            const countriesData = await axios.get(
-                "/countries"
-                )
-            const countries = countriesData.data
-            dispatch({type:GET_COUNTRIES_DOS, payload: countries})
+            try{
+                const countriesData = await axios.get(
+                    "/countries"
+                    )
+                const countries = countriesData.data
+                dispatch({type:GET_COUNTRIES_DOS, payload: countries})
+            } catch (error){
+        console.log(error)
+        
+            }
+
         }
         }
     
@@ -114,10 +125,16 @@ return{
 
 export const getCountry=(name)=>{
 return (dispatch)=>{
-    axios.get(`/countries/${name}`)
-    .then(response=>{
-        dispatch(getCountrySuccess([response.data]))
-    })
+    try{
+        axios.get(`/countries/${name}`)
+        .then(response=>{
+            dispatch(getCountrySuccess([response.data]))
+        })
+    } catch (error){
+        console.log(error)
+
+    }
+   
 
 }
 }
