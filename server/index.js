@@ -14,7 +14,7 @@ conn.sync({ alter: true }).then(() => {
 server.listen(PORT, async() => {
 const dbCountries= Country.findAll();
 if(!dbCountries.length){
-  const urlApi = await axios.get(`http://${PORT}:5000/countries`);
+  const urlApi = await axios.get(`http://${DB_HOST}:${DB_PORT}/countries`);
   const infoApi = await urlApi.data.map((pais)=>{
     return{
    id: pais.cca3,
