@@ -1,13 +1,18 @@
+require("dotenv").config();
 const axios = require("axios");
 const server = require("./src/server");
 const { conn, Country} = require('./src/db.js');
-const PORT = 3001;
- 
+
+const {
+  PORT,
+  LOCAL
+} = process.env;
+
 conn.sync({ alter: true }).then(() => {
 server.listen(PORT, async() => {
 const dbCountries= Country.findAll();
 if(!dbCountries.length){
-  const urlApi = await axios.get('http://localhost:5000/countries');
+  const urlApi = await axios.get(`${LOCAL}/countries`);
   const infoApi = await urlApi.data.map((pais)=>{
     return{
    id: pais.cca3,
