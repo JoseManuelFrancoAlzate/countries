@@ -5,10 +5,12 @@ const activityFunction = require ('./models/Activity')
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME,DB_PORT
+  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME,DB_PORT,DB_URL
 } = process.env;
 
-const sequelize = new Sequelize(`postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, {
+//postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
+
+const sequelize = new Sequelize(`${DB_URL}`, {
   logging: false, 
   native: false, 
 });
