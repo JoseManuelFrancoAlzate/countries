@@ -5,9 +5,7 @@ const { conn, Country} = require('./src/db.js');
 
 const {
   PORT,
-  DB_HOST,
-DB_PORT,
-DB_NAME
+  DB_HOST
 
 } = process.env;
 
@@ -15,12 +13,12 @@ conn.sync({ force: true }).then(() => {
 server.listen(PORT, async() => {
 const dbCountries= Country.findAll();
 if(!dbCountries.length){
-  const urlApi = await axios.get(`http://${DB_HOST}:5000/${DB_NAME}`);
+  const urlApi = await axios.get(`https://restcountries.com/v3/all`);
   const infoApi = await urlApi.data.map((pais)=>{
     return{
    id: pais.cca3,
    name: pais.name.common,
-   image: pais.flags.svg,
+   image: pais.flags[0],
    continent: pais.continents[0],
    capital: pais.capital ? pais.capital[0] : "Capital",
   subregion: pais.subregion ? pais.subregion: "Subregion",
