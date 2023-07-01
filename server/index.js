@@ -5,7 +5,6 @@ const { conn, Country} = require('./src/db.js');
 
 const {
   PORT,
-  DB_HOST
 
 } = process.env;
 
