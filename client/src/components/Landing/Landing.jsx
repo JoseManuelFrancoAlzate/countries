@@ -38,16 +38,16 @@ setErrors(validation({
           <h1 className={styled.styledLetra}>Bienvenidos a mi proyecto individual</h1>
           <h2 className={styled.styledLetra}>Countries</h2>
           <form onSubmit={handleSubmit}>
-            <p>
+            
             <label  className={styled.letraUser} htmlFor="username">Username:</label>
             <input value={userData.username}type="text" name="username" onChange={handleInputChange}/>
             {errors.username && <p className={styled.letraErr}>{errors.username}</p>}
-            </p>
-            <p>
+          
+            
             <label className={styled.letraUser} htmlFor="">Password:</label>
             <input value={userData.password} type="password" name="password" onChange={handleInputChange}/>
             {errors.password && <p className={styled.letraErr}>{errors.password}</p>}
-            </p>
+          
             <button className={styled.styledButton}>
            Login
             </button>

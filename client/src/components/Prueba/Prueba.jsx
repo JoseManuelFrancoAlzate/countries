@@ -74,10 +74,10 @@ const handlerFilterActivities = (e)=>{
         <SearchCountry/>
      <select  className={styled.selectCss} onChange={handlerOrder}>
       <option disabled='disabled'> Alphabetically</option>
-<option value="Ascendente">
+<option key="Ascendente"value="Ascendente">
 Upward
 </option>
-<option  value="Descendente">
+<option key="Descendente"  value="Descendente">
 Falling
 </option>
       </select>
@@ -97,32 +97,32 @@ Falling
 <option value='allCountries'>
   All Countries
 </option>
-      <option value="North America">
+      <option key="North America"value="North America">
       North America
       </option>
-      <option value="South America">
+      <option key="South America" value="South America">
       South America
       </option>
-      <option value="Asia">
+      <option key="Asia" value="Asia">
       Asia
       </option>
-      <option value="Africa">
+      <option key="Africa" value="Africa">
       Africa
       </option>
-      <option value="Antarctica">
+      <option key="Antarctica" value="Antarctica">
       Antarctica
       </option>
-      <option value="Europe">
+      <option key="Europe" value="Europe">
       Europe
       </option>
-      <option value="Oceania">
+      <option  key="Oceania" value="Oceania">
       Oceania
       </option>
 
       </select>
 
       <select  className={styled.selectCss} onChange={handlerFilterActivities} >
-      <option value='All'>All activities</option>
+      <option  value='All'>All activities</option>
                         {activity.map(e => (
                             <option value={e.name} key={e.id}>{e.name}</option>
                         ))}
@@ -141,6 +141,7 @@ paginado={paginado}
     name= {countries.name}
     continent={countries.continent}
     population={countries.population}
+    key={countries.id}
    />
   })
 

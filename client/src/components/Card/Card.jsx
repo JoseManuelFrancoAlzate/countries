@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const Card =(props)=>{
     return(
         
-        <div key={props.key}  className={styled.card}>
+        <div   className={styled.card}>
               <Link  to={`/detail/${props.id}`}>
 
            <img   className={styled.imgCss}src={props.image}/> 
